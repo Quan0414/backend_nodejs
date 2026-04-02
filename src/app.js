@@ -10,9 +10,34 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Request Logger
+// Advanced Request & Error Logger
 app.use((req, res, next) => {
-  console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
+  const start = Date.now();
+  const originalJson = res.json;
+
+  res.json = function (body) {
+    const duration = Date.now() - start;
+    const isError = res.statusCode >= 400;
+    
+    let logMsg = `[${new Date().toLocaleString()}] ${req.method} ${req.url} | Status: ${res.statusCode} | ${duration}ms`;
+    
+    // Nêú là lỗi, in luôn chi tiết lỗi ra Terminal
+    if (isError) {
+      logMsg += ` | ❌ Lỗi: ${body.message || 'Không rõ'}`;
+      if (req.body && Object.keys(req.body).length > 0) {
+        // Dấu đi password trước khi in req.body
+        const safeBody = { ...req.body };
+        if (safeBody.password) safeBody.password = '***';
+        logMsg += ` | Dữ liệu gửi lên: ${JSON.stringify(safeBody)}`;
+      }
+    } else {
+      logMsg += ` | ✅ Thành công`;
+    }
+
+    console.log(logMsg);
+    return originalJson.call(this, body);
+  };
+  
   next();
 });
 
