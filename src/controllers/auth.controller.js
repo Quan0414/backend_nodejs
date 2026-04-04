@@ -1,8 +1,8 @@
-const User = require('../models/user.model');
-const OTP = require('../models/otp.model');
-const emailService = require('../services/email.service');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+import User from '../models/user.model.js';
+import OTP from '../models/otp.model.js';
+import emailService from '../services/email.service.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -174,4 +174,4 @@ const authController = {
     }
 };
 
-module.exports = authController;
+export default authController;

@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const authRoutes = require('./routes/auth.routes');
-const adminRoutes = require('./routes/admin.routes');
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './routes/auth.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
 
@@ -61,4 +61,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Internal server error' });
 });
 
-module.exports = app;
+export default app;

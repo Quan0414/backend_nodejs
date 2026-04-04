@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
-const authMiddleware = require('../middlewares/auth.middleware');
+import authController from '../controllers/auth.controller.js';
+import authMiddleware from '../middlewares/auth.middleware.js';
 
 // Public routes
 router.post('/signup', authController.signup);
@@ -21,4 +21,4 @@ router.get('/me', authMiddleware, (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

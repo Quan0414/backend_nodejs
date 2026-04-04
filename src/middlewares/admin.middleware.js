@@ -1,4 +1,4 @@
-const User = require('../models/user.model');
+import User from '../models/user.model.js';
 
 const adminMiddleware = async (req, res, next) => {
     try {
@@ -19,4 +19,4 @@ const adminMiddleware = async (req, res, next) => {
     }
 };
 
-module.exports = adminMiddleware;
+export default adminMiddleware;

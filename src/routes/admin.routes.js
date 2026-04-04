@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const adminController = require('../controllers/admin.controller');
-const authMiddleware = require('../middlewares/auth.middleware');
-const adminMiddleware = require('../middlewares/admin.middleware');
+import adminController from '../controllers/admin.controller.js';
+import authMiddleware from '../middlewares/auth.middleware.js';
+import adminMiddleware from '../middlewares/admin.middleware.js';
 
 // Protect all admin routes: User must be logged in AND must have admin role
 router.use(authMiddleware);
@@ -15,4 +15,4 @@ router.post('/users', adminController.createUser);
 router.put('/users/:id', adminController.updateUser);
 router.delete('/users/:id', adminController.deleteUser);
 
-module.exports = router;
+export default router;

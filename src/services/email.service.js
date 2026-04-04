@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
@@ -37,6 +37,6 @@ const sendOTP = async (email, otp) => {
     }
 };
 
-module.exports = {
+export default {
     sendOTP
 };
