@@ -1,6 +1,5 @@
-import User from '../models/user.model.js';
-import OTP from '../models/otp.model.js';
-import emailService from '../services/email.service.js';
+import { User, OTP } from '../models/index.js';
+import { emailService } from '../services/index.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 

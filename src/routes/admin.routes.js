@@ -1,8 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import adminController from '../controllers/admin.controller.js';
-import authMiddleware from '../middlewares/auth.middleware.js';
-import adminMiddleware from '../middlewares/admin.middleware.js';
+import { adminController } from '../controllers/index.js';
+import { authMiddleware, adminMiddleware } from '../middlewares/index.js';
 
 // Protect all admin routes: User must be logged in AND must have admin role
 router.use(authMiddleware);

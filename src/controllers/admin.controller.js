@@ -1,4 +1,4 @@
-import User from '../models/user.model.js';
+import { User } from '../models/index.js';
 import bcrypt from 'bcryptjs';
 
 const adminController = {

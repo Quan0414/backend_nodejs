@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import authController from '../controllers/auth.controller.js';
-import authMiddleware from '../middlewares/auth.middleware.js';
+import { authController } from '../controllers/index.js';
+import { authMiddleware } from '../middlewares/index.js';
 
 // Public routes
 router.post('/signup', authController.signup);

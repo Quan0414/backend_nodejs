@@ -1,4 +1,4 @@
-import User from '../models/user.model.js';
+import { User } from '../models/index.js';
 
 const adminMiddleware = async (req, res, next) => {
     try {
@@ -6,6 +6,7 @@ const adminMiddleware = async (req, res, next) => {
         if (!req.user || !req.user.id) {
             return res.status(401).json({ success: false, message: 'Authentication required' });
         }
+
 
         const user = await User.findById(req.user.id);
         
